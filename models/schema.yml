@@ -1,0 +1,12 @@
+
+version: 2
+sources:
+  - name: transaction
+    tables:
+      - name: transaction_clean
+  - name: order
+    tables:
+      - name: order_clean
+  - name: traffic
+    tables:
+      - name: traffic_par_date
