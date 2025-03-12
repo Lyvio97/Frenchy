@@ -13,3 +13,4 @@ sources:
 
 models:
   - name: transactions_clean
+  - name: email
