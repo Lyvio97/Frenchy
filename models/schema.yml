@@ -10,3 +10,6 @@ sources:
   - name: traffic
     tables:
       - name: traffic_par_date
+
+models:
+  - name: transactions_clean
