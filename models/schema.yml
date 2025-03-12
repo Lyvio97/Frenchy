@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: transaction
     tables:
-      - name: transaction_clean
+      - name: transactions
   - name: order
     tables:
       - name: order_clean
