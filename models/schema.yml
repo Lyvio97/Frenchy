@@ -1,9 +1,0 @@
-# schema.yml
-
-version: 2
-
-sources:
-  - name: transaction
-    tables:
-      - name: transaction
-      - name: ville
