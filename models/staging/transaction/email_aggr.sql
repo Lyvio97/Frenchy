@@ -2,7 +2,7 @@
 
 WITH cpm AS (
   SELECT 
-    FORMAT_DATE('%Y-%m', DATE(date_transaction)) AS annee_mois
+    mois_annee
     ,canal_last
     ,COUNT(DISTINCT campagne_last) AS total_campaigns
     ,SUM(revenus_achats) AS total_revenus
@@ -10,26 +10,28 @@ WITH cpm AS (
     ,500 AS monthly_cost
   FROM {{ ref('email') }}
   GROUP BY 
-    FORMAT_DATE('%Y-%m', DATE(date_transaction))
+    mois_annee
     ,canal_last
 )
 
 SELECT 
   email.campagne_last AS campagne
+  ,email.mois_annee
   ,email.canal_last AS canal
-  ,SUM(email.revenus_achats) AS revenus_campagne_mois
-  ,FORMAT_DATE('%Y-%m', DATE(email.date_transaction)) AS annee_mois
+  ,CAST(EXTRACT(MONTH FROM PARSE_DATE('%Y-%m', email.mois_annee)) AS STRING) AS month
   ,(500 / cpm.total_campaigns) AS campagne_total_spend
+  ,SUM(email.revenus_achats) AS revenus_campagne_mois
+  ,CONCAT(email.mois_annee, "_", email.campagne_last) AS mois_annee_campagne
 FROM {{ ref('email') }} AS email
 JOIN cpm
-  ON FORMAT_DATE('%Y-%m', DATE(email.date_transaction)) = cpm.annee_mois
+  ON FORMAT_DATE('%Y-%m', DATE(email.date_transaction)) = cpm.mois_annee
   AND email.canal_last = cpm.canal_last
 GROUP BY 
   email.campagne_last
+  ,email.mois_annee
   ,email.canal_last
-  ,annee_mois
-  ,cpm.total_campaigns
-  ,cpm.total_revenus
+  ,CAST(EXTRACT(MONTH FROM PARSE_DATE('%Y-%m', email.mois_annee)) AS STRING)
+  ,(500 / cpm.total_campaigns)
 ORDER BY 
-  annee_mois
+  mois_annee
   ,email.campagne_last
