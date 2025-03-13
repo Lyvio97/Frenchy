@@ -2,6 +2,7 @@
 
 SELECT
   date_transaction
+  ,FORMAT_DATE('%Y-%m', DATE(date_transaction)) AS mois_annee
   ,id_transaction
   ,achats_ecommerce
   ,quantite_achetee
@@ -16,7 +17,7 @@ SELECT
   ,campagne_first
   ,platforme_source_last
   ,source_last
-  ,canal_last
+  ,"email" AS canal_last
   ,support_last
   ,id_campagne_last
   ,campagne_last
