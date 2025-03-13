@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> a632f32aabd7dff81f712c611e3f50acc898baa2
 with 
 
 source as (
@@ -16,13 +12,8 @@ renamed as (
         canal,
         date_heure,
         date_simple,
-<<<<<<< HEAD
         `month`,
         source.source,
-=======
-        month,
-        source,
->>>>>>> a632f32aabd7dff81f712c611e3f50acc898baa2
         support,
         campagne,
         nouveaux_utilisateur,

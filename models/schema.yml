@@ -9,12 +9,12 @@ sources:
       - name: order_clean
   - name: traffic
     tables:
-<<<<<<< HEAD
-      - name: traffic
-=======
       - name: traffic
 
 models:
   - name: transactions_clean
   - name: email
->>>>>>> a632f32aabd7dff81f712c611e3f50acc898baa2
+  - name: email_aggr
+  - name: transac_aggr
+  - name: traffic
+  - name: traffic_campagne
