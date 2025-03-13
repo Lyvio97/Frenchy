@@ -9,4 +9,8 @@ sources:
       - name: order_clean
   - name: traffic
     tables:
-      - name: traffic_par_date
+      - name: traffic
+
+models:
+  - name: transactions_clean
+  - name: email
