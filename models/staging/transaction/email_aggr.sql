@@ -32,4 +32,4 @@ GROUP BY
   ,cpm.total_revenus
 ORDER BY 
   annee_mois
-  ,email.campagne_last;
+  ,email.campagne_last
