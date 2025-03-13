@@ -9,6 +9,7 @@ source as (
 renamed as (
 
     select
+        CONCAT(`month`,"_", campagne) as mois_annee_campagne,
         canal,
         date_heure,
         date_simple,
@@ -24,7 +25,8 @@ renamed as (
         revenu_total,
         nb_achats,
         taux_de_rebond,
-        panier_moyen
+        panier_moyen,
+        round(safe_divide(nb_acheteur_total , (nouveaux_utilisateur + utilisateurs_connus))) as taux_conversion
 
     from source
 
