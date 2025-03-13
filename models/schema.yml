@@ -10,6 +10,11 @@ sources:
   - name: traffic
     tables:
       - name: traffic
+  - name: Central
+    tables:
+      - name: ads
+      - name: paid_boolean
+      - name: transaction_agg
 
 models:
   - name: transactions_clean
